@@ -1,0 +1,18 @@
+- var url = page.url.substring(page.url.indexOf('/') + 1).replace(/\//g, '-');
+- var email = locals.comment_email.split('@');
+- var mailto = email[0] + '+' + url + '@' + email[1];
+
+section#comments
+  h2 Comments
+
+  if _.has(contents.comments, url)
+    - var index = 1;
+    for comment in _.keys(contents.comments[url]).sort()
+      - comment = contents.comments[url][comment]
+      include comment
+      - index++;
+
+  p
+    | Have something to add? Leave a 
+    a(href='mailto:'+mailto+'?subject='+page.title, target='_blank') comment
+    | .
