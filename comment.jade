@@ -10,5 +10,4 @@ blockquote(id=permalink,
       else
         =comment._metadata.name
       | , 
-      a(href='\##{permalink}')
-        mixin date(comment._metadata.date)
+      a(href='\##{permalink}')=comment._metadata.date
